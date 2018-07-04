@@ -11,6 +11,8 @@
         android:icon="@mipmap/ic_huntingday"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_huntingday_round"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.AppCompat">
         <activity android:name=".LoginScreen">

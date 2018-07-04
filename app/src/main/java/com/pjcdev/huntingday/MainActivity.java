@@ -1,5 +1,8 @@
 package com.pjcdev.huntingday;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseUser user;
     private ImageView ivProfile;
     private TextView tvName,tvCity;
-
+    private Fragment fragment=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +60,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Registrar nueva actividad", null).show();
+               fragment=new NewActivityFragment();
             }
         });
 
@@ -167,26 +169,35 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.addDogs) {
-
+            fragment=new DogFragment();
         } else if (id == R.id.addWeapons) {
-
+            fragment=new WeaponFragment();
         } else if (id == R.id.newActivity) {
-
+            fragment=new NewActivityFragment();
         } else if (id == R.id.History) {
-
+            fragment=new HistoryFragment();
         } else if (id == R.id.editProfile) {
-
+            fragment=new EditProfileFragment();
         } else if (id == R.id.about) {
-
+            fragment=new AboutFragment();
         }else if (id == R.id.Logout) {
             signOut();
             goLoginScreen();
+        }
+
+        //create the fragment
+        if(fragment!=null){
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.principalArea,fragment);
+            fragmentTransaction.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     @Override
     public void onStart() {
