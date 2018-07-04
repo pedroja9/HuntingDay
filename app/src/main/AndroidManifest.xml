@@ -45,7 +45,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
+            android:label="Mis Actividades"
             android:theme="@style/Hunting1"></activity>
     </application>
 
