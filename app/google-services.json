@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "887832486454",
+    "firebase_url": "https://huntingday-1e3ac.firebaseio.com",
+    "project_id": "huntingday-1e3ac",
+    "storage_bucket": "huntingday-1e3ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887832486454:android:e71bacd7fd2f6a07",
+        "android_client_info": {
+          "package_name": "com.pjcdev.huntingday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887832486454-11r1l6gqavqiiolo8limbtg2ob8ghhtm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pjcdev.huntingday",
+            "certificate_hash": "b26a51f1cb18c13f5af4782bf97ccb49258a8a94"
+          }
+        },
+        {
+          "client_id": "887832486454-f82is8i2b8hprr1reepnbqdl493ne8f2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlrLrFIj1r5JDLfvz2ka9BPiugjfZG5bU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887832486454-f82is8i2b8hprr1reepnbqdl493ne8f2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

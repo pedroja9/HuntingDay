@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/addDogs"
+            android:title="Añadir Perros"
+            android:icon="@drawable/ic_dog"/>
+
+
+        <item
+            android:id="@+id/addWeapons"
+            android:title="Añadir Armas"
+            android:icon="@drawable/ic_weapon"/>
+        <item
+            android:id="@+id/newActivity"
+            android:title="Resgistrar nueva actividad"
+            android:icon="@drawable/ic_newactivity"/>
+        <item
+            android:id="@+id/History"
+            android:title="Historial"
+            android:icon="@drawable/ic_history"/>
+        <item
+            android:id="@+id/editProfile"
+            android:title="Editar Perfil"
+            android:icon="@drawable/ic_profile"/>
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:title="Acerca de"
+                android:icon="@drawable/ic_about"
+                />
+
+            <item
+                android:id="@+id/Logout"
+                android:title="Desconectar"
+                android:icon="@drawable/ic_logout"/>
+
+
+        </menu>
+    </item>
+
+</menu>
