@@ -4,7 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -57,14 +60,19 @@ public class NewActivityFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //hide floating button
+        ((MainActivity) getActivity()).hideFloatingActionButton();
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_activity, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -93,5 +101,11 @@ public class NewActivityFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //hide check button from toolbar
+        menu.findItem(R.id.check).setVisible(false);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

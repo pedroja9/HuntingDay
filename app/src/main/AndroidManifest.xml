@@ -46,7 +46,10 @@
         <activity
             android:name=".MainActivity"
             android:label="Mis Actividades"
-            android:theme="@style/Hunting1"></activity>
+            android:theme="@style/Hunting1"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
     </application>
 
 </manifest>

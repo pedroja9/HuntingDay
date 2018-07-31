@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity
     private ImageView ivProfile;
     private TextView tvName,tvCity;
     private Fragment fragment=null;
+    private FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +58,20 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               fragment=new NewActivityFragment();
+                fragment=new NewActivityFragment();
+                String title="Nueva Jornada de Caza";
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.principalArea,fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                //change title
+                getSupportActionBar().setTitle(title);
+
             }
         });
 
@@ -86,6 +97,7 @@ public class MainActivity extends AppCompatActivity
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
+
 
 
         ivProfile=(ImageView)headerview.findViewById(R.id.imageProfile);
@@ -139,13 +151,19 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        //hide check button from toolbar
+        MenuItem item= menu.findItem(R.id.check);
+        item.setVisible(false);
+        this.invalidateOptionsMenu();
+
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -155,8 +173,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.check) {
             return true;
+        }else
+        {
+            if (id==android.R.id.home){
+                finish();
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -167,19 +190,26 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        String title="";
 
         if (id == R.id.addDogs) {
             fragment=new DogFragment();
+            title="Mis Perros";
         } else if (id == R.id.addWeapons) {
             fragment=new WeaponFragment();
+            title="Mis Armas";
         } else if (id == R.id.newActivity) {
             fragment=new NewActivityFragment();
+            title="Nueva Jornada de Caza";
         } else if (id == R.id.History) {
             fragment=new HistoryFragment();
+            title="Mis Actividades";
         } else if (id == R.id.editProfile) {
             fragment=new EditProfileFragment();
+            title="Mi Perfil";
         } else if (id == R.id.about) {
             fragment=new AboutFragment();
+            title="Acerca de";
         }else if (id == R.id.Logout) {
             signOut();
             goLoginScreen();
@@ -190,8 +220,12 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.principalArea,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            //change title
+            getSupportActionBar().setTitle(title);
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -247,4 +281,17 @@ public class MainActivity extends AppCompatActivity
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+    //method to hide floatingActionButton
+    public FloatingActionButton getFloatingActionButton() {
+        return fab;
+    }
+
+    public void showFloatingActionButton() {
+        fab.show();
+    }
+
+    public void hideFloatingActionButton() {
+        fab.hide();
+    }
+
 }
