@@ -5,10 +5,113 @@
     android:layout_height="match_parent"
     tools:context=".DogFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSeleccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:text="Selecciona la raza del perro" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <RadioButton
+                android:id="@+id/rbtnCaza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:text="Perro de Caza" />
+
+            <RadioButton
+                android:id="@+id/rbtnGalgo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:checked="true"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:text="Galgo" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvDogname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:text="Introduce el nombre del perro/a" />
+
+        <EditText
+            android:id="@+id/etDogname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:text="Nombre del Perro" />
+        <TextView
+            android:id="@+id/tvSexdog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:text="Introduce el sexo del perro/a" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="100dp" >
+
+            <RadioButton
+                android:id="@+id/rbtnMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:textSize="15dp"
+                android:text="Macho" />
+
+            <RadioButton
+                android:id="@+id/rbtnFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:checked="true"
+                android:textSize="15dp"
+                android:text="Hembra" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:text="Introduce fecha nacimiento del perro/a" />
+
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
+            android:maxLines="1"/>
+    </LinearLayout>
 
 </FrameLayout>

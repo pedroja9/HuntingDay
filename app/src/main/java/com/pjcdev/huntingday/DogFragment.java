@@ -1,15 +1,22 @@
 package com.pjcdev.huntingday;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Switch;
+
+import java.util.Calendar;
 
 
 /**
@@ -20,7 +27,7 @@ import android.view.ViewGroup;
  * Use the {@link DogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DogFragment extends Fragment {
+public class DogFragment extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +36,9 @@ public class DogFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private EditText etAge;
+    private int year,month,day;
+    private Calendar calendar;
 
     private OnFragmentInteractionListener mListener;
 
@@ -61,13 +71,27 @@ public class DogFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
+        //add back button to toolbar
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dog, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_dog, container, false);
+
+        etAge = (EditText) rootView.findViewById(R.id.etAge);
+        etAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -82,6 +106,36 @@ public class DogFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    //method to show a calendar dialog to choose a date
+    private void showDatePickerDialog() {
+
+        calendar=Calendar.getInstance();
+        year=calendar.get(Calendar.YEAR);
+        month=calendar.get(Calendar.MONTH);
+        day=calendar.get(Calendar.DAY_OF_MONTH);
+
+        //because january is month 0
+        month=month+1;
+
+        //create and show a DatePicker dialog
+
+        etAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month=month+1;
+
+                    etAge.setText(dayOfMonth+"/"+month+"/"+year);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+
+        });
     }
 
     /**
